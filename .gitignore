@@ -1,0 +1,9 @@
+# File .gitignore
+
+# Security
+.env
+*.env
+
+# IDEs 
+.idea/
+.vscode/

@@ -1,0 +1,53 @@
+<div class="login-container">
+   <div class="login-card">
+    <div class="login-header">
+        <h2>Welcome</h2>
+        <p>Enter your credentials to access the system</p>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input
+            type="text" 
+            id="username" 
+            formControlName="username" 
+            placeholder="Enter your username"
+            [class.input-error]="loginForm.get('username')?.touched && loginForm.get('username')?.invalid"
+            />
+            @if (loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['required']) {
+                <span class="error-text">Username is required.</span>
+            }
+            @if (loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['minlength']) {
+                <span class="error-text">Minimum 3 characters required.</span>
+            }
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input 
+            type="password" 
+            id="password" 
+            formControlName="password" 
+            placeholder="Enter your password"
+            [class.input-error]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+            />
+            @if (loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']) {
+                <span class="error-text">Password is required.</span>
+            }
+        </div>
+
+        @if (errorMessage) {
+            <div class="global-error">
+            {{ errorMessage }}
+            </div>
+        }
+
+        <button type="submit" [disabled]="loginForm.invalid || isLoading" class="btn-login">
+            @if (isLoading) {
+            <span class="spinner"></span> Loading...
+            } @else {
+            Log in
+            }
+        </button>
+    </form>
+   </div>
+</div>

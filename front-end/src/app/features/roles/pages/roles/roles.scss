@@ -1,0 +1,189 @@
+.roles-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background-color: var(--color-info-light);
+  padding: 40px 40px;
+
+  .roles-card {
+    width: 60%;
+    background: var(--color-white);
+    padding: 40px;
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--box-shadow);
+
+    .roles-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      gap: 16px;
+
+      h2 {
+        color: var(--color-dark);
+        margin-bottom: 6px;
+      }
+
+      p {
+        color: var(--color-info-dark);
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+    }
+
+    .btn-back {
+      padding: 8px 16px;
+      background-color: transparent;
+      color: var(--color-dark);
+      border: 1px solid var(--color-info-dark);
+      border-radius: var(--border-radius-1);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: var(--color-info-dark);
+        color: var(--color-white);
+        border-color: var(--color-info-dark);
+        transform: translateX(-2px);
+      }
+
+      &:active {
+        transform: translateX(0);
+      }
+    }
+
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      color: var(--color-info-dark);
+      
+      .spinner-loading {
+        width: 30px;
+        height: 30px;
+        border: 3px solid var(--color-info-light);
+        border-radius: 50%;
+        border-top-color: var(--color-primary);
+        animation: spin 0.8s linear infinite;
+        margin-bottom: 15px;
+      }
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+
+      thead {
+        th {
+          padding: 16px 16px;
+          color: var(--color-info-dark);
+          font-size: 13px;
+          font-weight: 900;
+          text-transform: uppercase;
+          border-bottom: 2px solid var(--color-info-light);
+        }
+      }
+
+      tbody tr {
+        border-bottom: 1px solid var(--color-info-light);
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background-color: var(--color-info-light);
+        }
+
+        td {
+          padding: 16px;
+          font-size: 16px;
+          color: var(--color-dark);
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .user-avatar {
+        width: 32px;
+        height: 32px;
+        background-color: var(--color-info-light);
+        color: var(--color-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 14px;
+      }
+
+      strong {
+        font-size: 16px;
+      }
+    }
+
+    .roles-list {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .role-tag {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      background-color: var(--color-info-light);
+      color: var(--color-dark);
+    }
+
+    .select-action-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .select-role {
+      padding: 8px 12px;
+      border: 1px solid var(--color-info-light);
+      border-radius: var(--border-radius-1);
+      background-color: var(--color-white);
+      color: var(--color-dark);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
+
+      &:focus {
+        border-color: var(--color-primary);
+        box-shadow: var(--box-shadow);
+      }
+
+      &:hover {
+        background-color: var(--color-info-light);
+      }
+      
+      option {
+        background-color: var(--color-background);
+        color: var(--color-dark);
+      }
+    }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+}

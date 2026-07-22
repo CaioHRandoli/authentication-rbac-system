@@ -1,0 +1,15 @@
+<div class="home-container">
+  <div class="home-card">
+    <h1>Login Successful!</h1>
+    <p class="home-subtitle">Welcome</p>
+
+    @if (isAdmin()) {
+      <button routerLink="/roles" class="btn-manage">
+        Manage Permissions
+      </button>
+    }
+    <button (click)="logout()" class="btn-logout">
+      Logout
+    </button>
+  </div>
+</div>

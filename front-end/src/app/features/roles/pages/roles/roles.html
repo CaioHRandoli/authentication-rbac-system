@@ -1,0 +1,61 @@
+<div class="roles-container">
+  <div class="roles-card">
+    <div class="roles-header">
+      <div>
+        <h2>Permission Management</h2>
+        <p>View registered users and manage their system permissions.</p>
+      </div>
+      <button routerLink="/home" class="btn-back">
+        Back to Home
+      </button>
+    </div>
+    @if (isLoading()) {
+      <div class="loading">
+        <div class="spinner-loading"></div>
+        <p>Fetching users from the database...</p>
+      </div>
+    } @else {
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Current Permissions</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of users(); track user.id) {
+              <tr>
+                <td>
+                  <div class="user-info">
+                    <span class="user-avatar">{{ user.username.charAt(0).toUpperCase() }}</span>
+                    <strong>{{ user.username }}</strong>
+                  </div>
+                </td>
+                <td>
+                  <span class="role-tag" 
+                        [class.admin]="user.roles[0] === 'ROLE_ADMIN'"
+                        [class.manager]="user.roles[0] === 'ROLE_MANAGER'"
+                        [class.user]="user.roles[0] === 'ROLE_USER'">
+                    {{ user.roles[0] }}
+                  </span>
+                </td>
+                <td>
+                  <div class="select-action-container">
+                    <select (change)="updateUserRole(user.id, $event)" class="select-role">
+                      <option value="" disabled selected>Change Role...</option>
+                      <option value="ROLE_USER">Set as USER</option>
+                      <option value="ROLE_MANAGER">Set as MANAGER</option>
+                      <option value="ROLE_ADMIN">Set as ADMIN</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+</div>
